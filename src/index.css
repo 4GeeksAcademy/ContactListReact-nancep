@@ -1,0 +1,21 @@
+.contact-card {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+  font-weight: bold;
+}
+
+.card-text i {
+  color: #6c757d;
+  margin-right: 8px;
+}
+
+.btn-link {
+  font-size: 18px;
+}
+
+.container h2 {
+  font-weight: bold;
+}
+

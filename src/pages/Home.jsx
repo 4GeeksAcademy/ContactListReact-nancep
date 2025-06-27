@@ -1,16 +1,33 @@
-import rigoImageUrl from "../assets/img/rigo-baby.jpg";
-import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
+import React from "react";
+import { useContact } from "../context/ContactContext";
+import ContactCard from "../components/ContactCard";
+import { useNavigate } from "react-router-dom";
 
-export const Home = () => {
+const Home = () => {
+  const { contacts } = useContact();
+  const navigate = useNavigate();
 
-  const {store, dispatch} =useGlobalReducer()
+  return (
+    <div className="container mt-4">
+      <div className="d-flex justify-content-between align-items-center mb-4">
+        <h2>My Contacts</h2>
+        <button
+          className="btn btn-success"
+          onClick={() => navigate("/add")}
+        >
+          Add new contact
+        </button>
+      </div>
+      {contacts.length === 0 ? (
+        <p>No contacts available.</p>
+      ) : (
+        contacts.map((contact) => (
+          <ContactCard key={contact.id} contact={contact} />
+        ))
+      )}
+    </div>
+  );
+};
 
-	return (
-		<div className="text-center mt-5">
-			<h1>Hello Rigo!!</h1>
-			<p>
-				<img src={rigoImageUrl} />
-			</p>
-		</div>
-	);
-}; 
+export default Home;
+
